@@ -1,0 +1,13 @@
+server:
+  port: '8081'
+
+provider:
+  url: "http://localhost:8082"
+
+logging:
+  level:
+    web: TRACE
+    org:
+      springframework:
+        web: TRACE
+

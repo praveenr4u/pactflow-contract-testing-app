@@ -1,0 +1,18 @@
+server:
+  port: '8082'
+
+logging:
+  level:
+    web: TRACE
+    org:
+      springframework:
+        web: TRACE
+
+#pactbroker:
+#  host: "localhost"
+#  port: "8000"
+#  protocol: "http"
+#  auth:
+#    username: "pact_workshop"
+#    password: "pact_workshop"
+

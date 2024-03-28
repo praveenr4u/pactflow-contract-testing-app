@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>pactflow-contract-testing-app</artifactId>
+        <groupId>org.automationfraternity</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>consumer</artifactId>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>au.com.dius.pact.consumer</groupId>
+            <artifactId>junit5</artifactId>
+            <version>4.6.7</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/au.com.dius.pact.provider/maven -->
+        <dependency>
+            <groupId>au.com.dius.pact.provider</groupId>
+            <artifactId>maven</artifactId>
+            <version>4.6.7</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>au.com.dius</groupId>
+                <artifactId>pact-jvm-provider-maven_2.12</artifactId>
+                <version>3.5.11</version>
+                <configuration>
+                   <!-- <pactDirectory>/Users/a266270/Documents/INTELLIJ_WORKSPACE/Personal _workspace/PACT_TEST/pactflow-contract-testing-reference-app/consumer/pacts</pactDirectory> -->
+                    <projectVersion>${project.version}</projectVersion>
+                    <pactBrokerUrl>http://localhost:8000/</pactBrokerUrl>
+                    <pactBrokerUsername>pact</pactBrokerUsername>
+                    <pactBrokerPassword>pact</pactBrokerPassword>
+                    <trimSnapshot>true</trimSnapshot>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>publish-contract</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>publish</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--<plugin>
+                <groupId>au.com.dius.pact.provider</groupId>
+                <artifactId>maven</artifactId>
+                <version>4.6.4</version>
+                <configuration>
+                    <pactDirectory>/Users/a266270/Documents/INTELLIJ_WORKSPACE/Personal _workspace/PACT_TEST/pactflow-contract-testing-reference-app/consumer/pacts</pactDirectory> &lt;!&ndash;  Defaults to ${project.build.directory}/pacts &ndash;&gt;
+                    &lt;!&ndash;  <pactDirectory>/Users/a266270/Documents/INTELLIJ_WORKSPACE/Personal_workspace/PACT_TEST/pactflow-contract-testing-reference-app/provider/src/main/resources/pacts</pactDirectory> &ndash;&gt;
+                   <pactBrokerUrl>http://localhost:8000/</pactBrokerUrl>
+                   <pactBrokerUsername>pact</pactBrokerUsername>
+                   <pactBrokerPassword>pact</pactBrokerPassword>
+&lt;!&ndash;                    <projectVersion>${git.shorthash}</projectVersion> &lt;!&ndash; Defaults to ${project.version}, or you can generate your own version from git &ndash;&gt;&ndash;&gt;
+&lt;!&ndash;                    <trimSnapshot>true</trimSnapshot> &lt;!&ndash; Defaults to false &ndash;&gt;&ndash;&gt;
+&lt;!&ndash;                    <skipPactPublish>${pact.skipPublish}</skipPactPublish> &lt;!&ndash; Defaults to false &ndash;&gt;&ndash;&gt;
+                </configuration>
+            </plugin>-->
+        </plugins>
+    </build>
+</project>
