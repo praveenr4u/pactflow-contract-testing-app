@@ -15,20 +15,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-
-//@PactFolder("/Users/a266270/Documents/INTELLIJ_WORKSPACE/Personal_workspace/PACT_TEST/pactflow-contract-testing-reference-app/provider/src/main/resources/pacts")
-//@PactFolder("pacts")
 @PactBroker(
         host = "localhost",
         port = "8000",
         authentication = @PactBrokerAuth(username = "pact", password = "pact")
 )
 @Provider("EmployeeServiceAPI")
-//@PactBroker(
-//        host = "localhost",
-//        port = "8000",
-//        authentication = @PactBrokerAuth(username = "pact", password = "pact")
-//)
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ProviderPactTest {
